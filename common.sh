@@ -23,7 +23,7 @@ function get_current_cpu_loading() {
   stat1=$( head -1 /proc/stat )
   IFS=" " read _1 user1 nice1 system1 idle1 iowait1 irq1 softrq1 steal1 __1 ___1 <<< "$stat1"
   total_time1=$(( $user1+$nice1+$system1+$idle1+$iowait1+$irq1+$softrq1 ))
-  sleep 0.1s
+  sleep 3
   stat2=$( head -1 /proc/stat )
   IFS=" " read _2 user2 nice2 system2 idle2 iowait2 irq2 softrq2 steal2 __2 ___2 <<< "$stat2"
   total_time2=$(( $user2+$nice2+$system2+$idle2+$iowait2+$irq2+$softrq2 ))

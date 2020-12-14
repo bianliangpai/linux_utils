@@ -28,5 +28,5 @@ function get_current_cpu_loading() {
   IFS=" " read _2 user2 nice2 system2 idle2 iowait2 irq2 softrq2 steal2 __2 ___2 <<< "$stat2"
   total_time2=$(( $user2+$nice2+$system2+$idle2+$iowait2+$irq2+$softrq2 ))
 
-  printf %.10f "$(( 1 - ($idle2+$iowait2-$idle1-$iowait1) / ($total_time2-$total_time1) ))e-9"
+  printf %.10f "$(( ( 10000 - ((10000 * ($idle2+$iowait2-$idle1-$iowait1)) / ($total_time2-$total_time1)) ) / 100 ))"
 }
